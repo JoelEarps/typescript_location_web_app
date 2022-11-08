@@ -4,3 +4,7 @@
 // Different to export default - it will be the default export and therefore can be named anything
 // In TS default is not really used
 import { User } from './Users/Users';
+
+const user = new User();
+
+console.log(user);

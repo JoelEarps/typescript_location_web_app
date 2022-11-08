@@ -15,10 +15,9 @@ export class User {
     this.name = faker.name.firstName();
     // Lat and long are strings - so need converting to numbers
     // To direct assignment like below will fail as lat isn't assigned to an object and the properties inside of it
-    this.location;
-    {
-      lat: parseFloat(faker.address.latitude());
-      lng: parseFloat(faker.address.longitude());
-    }
+    this.location = {
+      lat: parseFloat(faker.address.latitude()),
+      lng: parseFloat(faker.address.longitude()),
+    };
   }
 }
