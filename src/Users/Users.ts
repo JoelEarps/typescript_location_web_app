@@ -2,13 +2,17 @@
 // In this case we will fake name and address
 
 import faker from 'faker';
+import { Mappable } from '../Mappable/Mappable';
 
-export class User {
+// Want to make sure that the User Class to Satisfy the Interface - this way TS can make sure the User is Implemented correctly
+// Add a custom variable e.g. color to Mappable Interface it will create Error
+export class User implements Mappable {
   name: string;
   location: {
     lat: number;
     lng: number;
   };
+  color: string = 'red';
 
   constructor() {
     // When class is created randomly generate name and location
