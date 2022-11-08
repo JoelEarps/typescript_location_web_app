@@ -20,12 +20,22 @@ export class CustomMap {
   // We are going to invert the dependency - every class, if you want to be an argument to add marker - here is what you have to do
   // In this case - have a location property that is an object - with a lat and long number
   addMarker(mappable: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng,
       },
+    });
+
+    marker.addListener('click', () => {
+      // Looking at type def file content can be a content?: string|null|Element|Text;
+      // In order to customise
+      const infoWindow = new google.maps.InfoWindow({
+        content: 'Hello there!',
+      });
+
+      infoWindow.open(this.googleMap, marker);
     });
   }
 }
