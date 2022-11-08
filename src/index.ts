@@ -10,3 +10,7 @@ import { CustomMap } from './Map/CustomMap';
 
 // Maps is a class - requires mapDiv - reference to a html element where we present and house the map
 const map = new CustomMap('map');
+const user = new User();
+const company = new Company();
+map.addMarker(user);
+map.addMarker(company);

@@ -1,3 +1,4 @@
+import { Mappable } from '../Mappable/Mappable';
 export class CustomMap {
   private googleMap: google.maps.Map;
 
@@ -7,8 +8,24 @@ export class CustomMap {
       {
         // This is required - even thought it says optional
         center: { lat: 52.5, lng: 0 },
-        zoom: 8,
+        zoom: 1,
       }
     );
+  }
+  // Two ways of doing this you can pass in instance of a User or a Company
+  // What about if we have multiple different classes that require markers and further customisation
+  // When use an OR operator - it will burrow down and check which properties are the same and only allow them to be used
+  // It does this for all classes - which is not computationally efficient - therefore it is better to make it an interface
+
+  // We are going to invert the dependency - every class, if you want to be an argument to add marker - here is what you have to do
+  // In this case - have a location property that is an object - with a lat and long number
+  addMarker(mappable: Mappable): void {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: mappable.location.lat,
+        lng: mappable.location.lng,
+      },
+    });
   }
 }
