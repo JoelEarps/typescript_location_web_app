@@ -30,9 +30,9 @@ export class CustomMap {
 
     marker.addListener('click', () => {
       // Looking at type def file content can be a content?: string|null|Element|Text;
-      // In order to customise
+      // In order to customise - want to make mappable have a property or Method that returns a string to be displayed
       const infoWindow = new google.maps.InfoWindow({
-        content: 'Hello there!',
+        content: mappable.markerContent(),
       });
 
       infoWindow.open(this.googleMap, marker);
