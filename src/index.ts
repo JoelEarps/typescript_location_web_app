@@ -6,10 +6,7 @@
 // In TS default is not really used
 import { User } from './Users/Users';
 import { Company } from './Company/Company';
+import { CustomMap } from './Map/CustomMap';
 
 // Maps is a class - requires mapDiv - reference to a html element where we present and house the map
-let map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
-  // This is required - even thought it says optional
-  center: { lat: 52.5, lng: 0 },
-  zoom: 8,
-});
+const map = new CustomMap('map');
